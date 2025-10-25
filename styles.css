@@ -208,6 +208,118 @@ body{
   color:var(--soft-mint);
 }
 
+/* CARD 3D FLIP container */
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:16px;
+  margin-bottom:36px;
+}
+
+/* outer card */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.03);
+  padding:0;
+  border-radius:12px;
+  min-height:140px;
+  perspective: 1200px; /* enable 3D */
+  cursor: pointer;
+  position:relative;
+  overflow:visible;
+  transition: transform 220ms ease;
+}
+.card:focus{ outline: 3px solid rgba(0,255,163,0.12); }
+
+/* inner rotating element */
+.card-inner{
+  width:100%;
+  min-height:140px;
+  border-radius:12px;
+  transform-style: preserve-3d;
+  transition: transform 700ms cubic-bezier(.2,.9,.2,1);
+  position:relative;
+}
+
+/* front/back panels */
+.card-front,
+.card-back{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position:absolute;
+  inset:0;
+  padding:16px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+  border-radius:12px;
+}
+.card-back{
+  transform: rotateY(180deg);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+  border-left: 3px solid rgba(0,255,163,0.03);
+}
+
+/* flipped state */
+.card.is-flipped .card-inner { transform: rotateY(180deg); }
+
+/* hover for non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .card-inner { transform: rotateY(180deg); }
+}
+
+/* card content styling */
+.card-icon{ font-size:26px; margin-bottom:6px; filter:drop-shadow(0 12px 24px rgba(0,255,163,0.03)); }
+.card h4{ margin:0 0 6px; font-size:16px; color:#EFFFF4; }
+.card p{ margin:0; color:var(--muted); font-size:13px; }
+.small-cta{
+  margin-top:10px;
+  display:inline-block;
+  color:var(--aqua-blue);
+  font-weight:700;
+  text-decoration:none;
+}
+
+/* progress wrap (autophagy) */
+.progress-wrap{
+  margin-top:12px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.progress-ring{ width:108px; height:108px; }
+.progress-ring__bg{
+  stroke: rgba(255,255,255,0.06);
+}
+.progress-ring__circle{
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  stroke-width:8;
+  stroke-linecap:round;
+  /* fallback stroke color */
+  stroke: linear-gradient(90deg, var(--neon-green), var(--aqua-blue));
+  filter: drop-shadow(0 8px 18px rgba(36,214,255,0.06));
+}
+.progress-number{
+  margin-left:-68px;
+  width:108px;
+  text-align:center;
+  position:relative;
+  pointer-events:none;
+}
+.progress-number .percent{
+  font-size:22px;
+  font-weight:800;
+  color:var(--neon-green);
+}
+.progress-label{
+  margin-top:6px;
+  font-size:12px;
+  color:var(--muted);
+  text-align:center;
+}
+
 /* HERO RIGHT: orb */
 .hero-right{
   position:relative;
@@ -268,24 +380,6 @@ body{
 /* Section heads */
 .section-head h3{ margin: 28px 0 6px; font-size:20px; color:#E6FFF4; }
 .section-head .muted{ color:var(--muted); margin:0 0 18px; }
-
-/* Cards grid - Body update */
-.cards-grid{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:16px;
-  margin-bottom:36px;
-}
-.card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.03);
-  padding:16px;
-  border-radius:12px;
-  min-height:120px;
-}
-.card-icon{ font-size:26px; margin-bottom:8px; filter:drop-shadow(0 12px 24px rgba(0,255,163,0.03)); }
-.card h4{ margin:0 0 6px; font-size:16px; color:#EFFFF4; }
-.card p{ margin:0; color:var(--muted); font-size:13px; }
 
 /* Soul area */
 .soul-grid{
