@@ -52,40 +52,21 @@ body{
 }
 .tagline{ margin:0; font-size:12px; color:var(--muted); margin-top:-2px; }
 
-/* === Navbar === */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* nav */
+.nav a{
+  color:var(--muted);
+  margin-left:18px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+}
+.nav a.ghost{
+  padding:8px 10px;
+  border-radius:8px;
+  background:rgba(255,255,255,0.02);
+  color:var(--soft-mint);
 }
 
-.logo {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #A8FF60;
-}
-
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-.navbar a {
-  text-decoration: none;
-  color: #C3FFD7;
-  font-weight: 400;
-  transition: 0.3s;
-}
-
-.navbar a.active,
-.navbar a:hover {
-  color: #00FFA3;
-}
 
 /* === Hero === */
 .hero {
