@@ -27,7 +27,6 @@
     <div class="container header-grid">
       <div class="brand">
         <div class="brand-logo" aria-hidden="true">
-          <!-- simple logo mark -->
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
             <path d="M7 13c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -70,13 +69,10 @@
         </div>
 
         <div class="hero-right" aria-hidden="true">
-          <!-- glowing planet / orb -->
           <div class="orb-wrap">
             <div class="orb">
               <div class="orb-core"></div>
             </div>
-
-            <!-- subtle orbit rings -->
             <svg class="orbit-rings" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <g stroke="url(#g1)" fill="none" stroke-width="0.6">
                 <ellipse cx="100" cy="100" rx="80" ry="46" />
@@ -91,7 +87,6 @@
             </svg>
           </div>
 
-          <!-- subtle watermark word -->
           <div class="watermark">FASTING</div>
         </div>
       </div>
@@ -105,28 +100,80 @@
       </div>
 
       <div class="cards-grid">
-        <article class="card">
-          <div class="card-icon">🫀</div>
-          <h4>Jantung</h4>
-          <p>Penurunan kolesterol & tekanan darah — bukti ilmiah mendukung manfaat kardiovaskular.</p>
+        <!-- Card: Jantung -->
+        <article class="card" tabindex="0" aria-label="Jantung card. klik atau hover untuk detail">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">🫀</div>
+              <h4>Jantung</h4>
+              <p>Penurunan kolesterol & tekanan darah — bukti ilmiah mendukung manfaat kardiovaskular.</p>
+            </div>
+            <div class="card-back">
+              <h4>Jantung — Detail</h4>
+              <p>Puasa menurunkan LDL dan tekanan darah pada studi observasional. Konsultasikan ke profesional kesehatan.</p>
+              <a class="small-cta" href="#scientific">Lihat sumber →</a>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🧬</div>
-          <h4>Sel</h4>
-          <p>Autophagy & regenerasi sel — proses pembersihan internal saat puasa.</p>
+        <!-- Card: Sel (dengan progress autophagy) -->
+        <article class="card autophagy" data-progress="72" tabindex="0" aria-label="Sel card dengan progress autophagy">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">🧬</div>
+              <h4>Sel</h4>
+              <p>Autophagy & regenerasi sel — proses pembersihan internal saat puasa.</p>
+
+              <!-- circular progress -->
+              <div class="progress-wrap" aria-hidden="false">
+                <svg class="progress-ring" width="108" height="108">
+                  <defs></defs>
+                  <circle class="progress-ring__bg" cx="54" cy="54" r="48" stroke-width="8" fill="none" />
+                  <circle class="progress-ring__circle" cx="54" cy="54" r="48" stroke-width="8" fill="none" stroke-linecap="round"/>
+                </svg>
+                <div class="progress-number"><span class="percent">0</span>%</div>
+                <div class="progress-label">Autophagy</div>
+              </div>
+            </div>
+
+            <div class="card-back">
+              <h4>Autophagy</h4>
+              <p>Proses pembersihan intra-sel yang dipicu oleh puasa; membantu regenerasi dan kebersihan sel.</p>
+              <a class="small-cta" href="#scientific">Baca ringkasan riset →</a>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🧠</div>
-          <h4>Otak</h4>
-          <p>Peningkatan fokus & mood — dampak psikologis dan neurologis puasa.</p>
+        <!-- Card: Otak -->
+        <article class="card" tabindex="0" aria-label="Otak card. klik atau hover untuk detail">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">🧠</div>
+              <h4>Otak</h4>
+              <p>Peningkatan fokus & mood — dampak psikologis dan neurologis puasa.</p>
+            </div>
+            <div class="card-back">
+              <h4>Otak — Detail</h4>
+              <p>Puasa meningkatkan BDNF dan neuroplasticity pada beberapa studi. Jadwalkan puasa dengan bijak.</p>
+              <a class="small-cta" href="#scientific">Sumber studi →</a>
+            </div>
+          </div>
         </article>
 
-        <article class="card">
-          <div class="card-icon">⚡</div>
-          <h4>Metabolisme</h4>
-          <p>Aktivasi AMPK & pengurangan inflamasi — adaptasi metabolik yang sehat.</p>
+        <!-- Card: Metabolisme -->
+        <article class="card" tabindex="0" aria-label="Metabolisme card. klik atau hover untuk detail">
+          <div class="card-inner">
+            <div class="card-front">
+              <div class="card-icon">⚡</div>
+              <h4>Metabolisme</h4>
+              <p>Aktivasi AMPK & pengurangan inflamasi — adaptasi metabolik yang sehat.</p>
+            </div>
+            <div class="card-back">
+              <h4>Metabolisme — Detail</h4>
+              <p>Aktivasi jalur AMPK dan perbaikan biomarker inflamasi pada studi time-restricted eating.</p>
+              <a class="small-cta" href="#scientific">Pelajari lebih lanjut →</a>
+            </div>
+          </div>
         </article>
       </div>
     </section>
@@ -171,15 +218,98 @@
   </footer>
 
   <script>
-    // small JS for dynamic year and minimal progressive loading feel
+    // dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // simulate loading completion then hide the loading strip
     window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelector('.loading-wrap').classList.add('loaded');
-      }, 1300);
+      setTimeout(() => document.querySelector('.loading-wrap').classList.add('loaded'), 1300);
     });
+
+    // CARD INTERACTIONS: hover (CSS) + click to toggle flip for touch devices
+    (function(){
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        // allow keyboard toggling (enter/space)
+        card.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.classList.toggle('is-flipped');
+          }
+        });
+
+        // click to flip (useful for touch)
+        card.addEventListener('click', (e) => {
+          // avoid flipping when clicking on links inside
+          if(e.target.closest('a')) return;
+          card.classList.toggle('is-flipped');
+        });
+      });
+    })();
+
+    // AUTOPHAGY PROGRESS: animate circular progress when visible
+    (function(){
+      const autophagyCard = document.querySelector('.card.autophagy');
+      if(!autophagyCard) return;
+
+      const svg = autophagyCard.querySelector('.progress-ring__circle');
+      const bg = autophagyCard.querySelector('.progress-ring__bg');
+      const numberEl = autophagyCard.querySelector('.progress-number .percent');
+      const target = parseInt(autophagyCard.getAttribute('data-progress') || '70', 10);
+
+      const r = svg.r.baseVal.value; // but svg element doesn't expose r directly when selected this way
+      // safer approach: read from attribute
+      const radius = svg.getAttribute('r') || 48;
+      const circ = 2 * Math.PI * radius;
+      svg.style.strokeDasharray = `${circ} ${circ}`;
+      svg.style.strokeDashoffset = circ;
+
+      // style strokes
+      svg.setAttribute('stroke', 'url(#progressGrad)'); // fallback; we'll also set via style
+      svg.style.transition = 'stroke-dashoffset 1.6s cubic-bezier(.2,.9,.2,1)';
+
+      // create gradient definition dynamically (for the progress ring)
+      const ns = "http://www.w3.org/2000/svg";
+      const svgEl = autophagyCard.querySelector('.progress-ring');
+      const defs = document.createElementNS(ns, 'defs');
+      const grad = document.createElementNS(ns, 'linearGradient');
+      grad.setAttribute('id', 'progressGrad');
+      grad.setAttribute('x1','0%'); grad.setAttribute('x2','100%');
+      const stop1 = document.createElementNS(ns, 'stop'); stop1.setAttribute('offset','0%'); stop1.setAttribute('stop-color','#00FFA3'); stop1.setAttribute('stop-opacity','1');
+      const stop2 = document.createElementNS(ns, 'stop'); stop2.setAttribute('offset','100%'); stop2.setAttribute('stop-color','#24D6FF'); stop2.setAttribute('stop-opacity','1');
+      grad.appendChild(stop1); grad.appendChild(stop2);
+      defs.appendChild(grad);
+      svgEl.insertBefore(defs, svgEl.firstChild);
+
+      // use IntersectionObserver to trigger animation when card is in view
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            // animate
+            const offset = circ - (target / 100) * circ;
+            // set stroke color via style fallback
+            svg.style.stroke = 'url(#progressGrad)';
+            svg.style.strokeDashoffset = offset;
+            // animate number increasing
+            let current = 0;
+            const duration = 1400;
+            const start = performance.now();
+            function tick(now){
+              const elapsed = now - start;
+              const progress = Math.min(1, elapsed / duration);
+              const ease = progress < 0.5 ? 2*progress*progress : -1 + (4 - 2*progress)*progress; // simple easing
+              const val = Math.round(ease * target);
+              numberEl.textContent = val;
+              if(progress < 1) requestAnimationFrame(tick);
+              else numberEl.textContent = target;
+            }
+            requestAnimationFrame(tick);
+            obs.unobserve(autophagyCard);
+          }
+        });
+      }, {threshold: 0.35});
+      obs.observe(autophagyCard);
+    })();
   </script>
 </body>
 </html>
