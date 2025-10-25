@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soul Update — Software Upgrade</title>
+  <link rel="stylesheet" href="soul.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🕊️ Soul Update</div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="body.html">Body</a></li>
+      <li><a href="soul.html" class="active">Soul</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>Software Upgrade: Refresh Your Soul</h1>
+    <p>Puasa bukan hanya menahan diri, tapi juga menyelaraskan pikiran, emosi, dan iman. 🌙</p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>🧘 Self-Control</h2>
+          <p>Melatih kesabaran dan disiplin diri.</p>
+        </div>
+        <div class="card-back">
+          <p>Puasa memperkuat kontrol diri dan menekan impuls negatif melalui peningkatan aktivitas korteks prefrontal otak (Frontiers in Psychology, 2021).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>❤️ Empati Sosial</h2>
+          <p>Merasakan penderitaan orang lain.</p>
+        </div>
+        <div class="card-back">
+          <p>Rasa lapar menumbuhkan empati dan meningkatkan kecenderungan berbagi — dibuktikan lewat peningkatan oksitosin (Journal of Religion & Health, 2020).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner">
+        <div class="card-front">
+          <h2>🌿 Spiritual Calmness</h2>
+          <p>Ketenangan hati & kejernihan pikiran.</p>
+        </div>
+        <div class="card-back">
+          <p>Selama Ramadan, kadar kortisol menurun hingga 20% dan kualitas tidur meningkat signifikan — memberi efek “peaceful mind”.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="progress-section">
+    <h3>Inner Peace Level</h3>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <p class="progress-text">Upgrading your soul...</p>
+  </section>
+
+  <script>
+    // Progress animation
+    const fill = document.querySelector('.progress-fill');
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        document.querySelector('.progress-text').innerText = 'Soul Upgrade Complete 🌸';
+      } else {
+        width++;
+        fill.style.width = width + '%';
+      }
+    }, 100);
+  </script>
+</body>
+</html>
