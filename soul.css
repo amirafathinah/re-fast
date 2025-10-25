@@ -1,16 +1,35 @@
-/* === Global === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+
+:root{
+  /* Palette */
+  --midnight-navy: #0B1D3A;
+  --neon-green: #00FFA3;
+  --lime-glow: #A8FF60;
+  --aqua-blue: #24D6FF;
+  --soft-mint: #C3FFD7;
+  --bright-yellow: #FFE94A;
+  --deep-teal: #004E64;
+
+  /* UI */
+  --bg: var(--midnight-navy);
+  --surface: rgba(255,255,255,0.02);
+  --muted: rgba(255,255,255,0.6);
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+  --maxwidth: 1200px;
 }
 
-body {
-  background-color: #0B1D3A;
-  color: #C3FFD7;
-  overflow-x: hidden;
-  transition: background 0.5s ease;
+* { box-sizing: border-box; }
+html,body { height:100%; }
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: radial-gradient(1200px 600px at 10% 10%, rgba(36,214,255,0.06), transparent),
+              radial-gradient(800px 400px at 90% 90%, rgba(168,255,96,0.02), transparent),
+              var(--bg);
+  color: #E7F6F2;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
 }
 
 /* Header */
