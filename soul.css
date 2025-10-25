@@ -32,6 +32,12 @@ body{
   line-height:1.45;
 }
 
+/* layout container */
+.container{
+  width: 92%;
+  max-width: var(--maxwidth);
+  margin: 0 auto;
+}
 /* Header */
 .site-header{
   position:sticky;
