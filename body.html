@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fasting — Body Update</title>
+
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="body.css">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M7 13c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Fasting</h1>
+          <p class="tagline">Body Update — Hardware Refresh</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="#cards">Body</a>
+        <a href="#data-viz" class="ghost">Data Viz</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Page header -->
+    <section class="page-head">
+      <h2>Body Update — Hardware Refresh</h2>
+      <p class="muted">Detail manfaat jasmani puasa dengan metric, visualisasi, dan sumber riset.</p>
+    </section>
+
+    <!-- Cards -->
+    <section id="cards" class="cards-grid">
+      <!-- Card: Heart -->
+      <article class="card" data-key="heart" tabindex="0" aria-label="Jantung card. Klik untuk detail.">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-icon">🫀</div>
+            <h4>Jantung</h4>
+            <p class="short">Menurunkan kolesterol & tekanan darah — risiko kardiovaskular berkurang.</p>
+            <div class="mini-spark" data-spark="heart"></div>
+          </div>
+          <div class="card-back">
+            <h4>Jantung — Rekomendasi</h4>
+            <p>Puasa moderat (time-restricted feeding / Ramadan-like) menunjukkan penurunan LDL pada beberapa studi. Kombinasikan dengan pola makan sehat.</p>
+            <a class="small-cta open-chart" href="#data-viz" data-chart="lipids">Lihat grafik lipids →</a>
+            <a class="small-cta" href="#sources" style="margin-left:12px">Sumber</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Cells (autophagy) -->
+      <article class="card autophagy" data-key="cells" tabindex="0" aria-label="Sel card. Klik untuk detail.">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-icon">🧬</div>
+            <h4>Sel</h4>
+            <p class="short">Autophagy & regenerasi sel — pembersihan seluler meningkat.</p>
+
+            <!-- small circular progress (static) -->
+            <div class="mini-progress" aria-hidden="true">
+              <svg width="80" height="80" viewBox="0 0 108 108" class="mini-ring">
+                <circle cx="54" cy="54" r="48" class="bg" stroke-width="8" fill="none"/>
+                <circle cx="54" cy="54" r="48" class="fg" stroke-width="8" fill="none" />
+              </svg>
+              <div class="mini-number"><span class="val">72</span>%</div>
+            </div>
+
+          </div>
+          <div class="card-back">
+            <h4>Autophagy — Penjelasan</h4>
+            <p>Autophagy adalah proses pembersihan komponen sel yang dipicu oleh keadaan puasa. Proses ini dikaitkan dengan regenerasi dan kesehatan sel.</p>
+            <a class="small-cta open-chart" href="#data-viz" data-chart="autophagy">Visualisasi Autophagy →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Brain -->
+      <article class="card" data-key="brain" tabindex="0" aria-label="Otak card. Klik untuk detail.">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-icon">🧠</div>
+            <h4>Otak</h4>
+            <p class="short">Peningkatan BDNF, fokus & mood.</p>
+            <div class="mini-spark" data-spark="bdnf"></div>
+          </div>
+          <div class="card-back">
+            <h4>Otak — Riset</h4>
+            <p>Studi menunjukkan peningkatan BDNF dan neuroplasticity pada subjek yang menjalani intermittent fasting atau puasa terkontrol.</p>
+            <a class="small-cta open-chart" href="#data-viz" data-chart="bdnf">Lihat BDNF →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card: Metabolism -->
+      <article class="card" data-key="metabolism" tabindex="0" aria-label="Metabolisme card. Klik untuk detail.">
+        <div class="card-inner">
+          <div class="card-front">
+            <div class="card-icon">⚡</div>
+            <h4>Metabolisme</h4>
+            <p class="short">Aktivasi AMPK, penurunan inflamasi, peningkatan sensitivitas insulin.</p>
+            <div class="mini-spark" data-spark="insulin"></div>
+          </div>
+          <div class="card-back">
+            <h4>Metabolisme — Tips</h4>
+            <p>Time-restricted eating dan puasa periodik dapat meningkatkan sensitivitas insulin dan menurunkan marker inflamasi seperti CRP.</p>
+            <a class="small-cta open-chart" href="#data-viz" data-chart="metabolic">Grafik metabolik →</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Data Visualization -->
+    <section id="data-viz" class="data-viz">
+      <div class="viz-head">
+        <h3>Data Visualization</h3>
+        <p class="muted">Gunakan slider untuk mensimulasikan durasi puasa (hari) dan lihat interpretasi perubahan biomarker.</p>
+      </div>
+
+      <div class="viz-controls">
+        <label for="daysRange">Durasi puasa (hari): <span id="daysValue">14</span>d</label>
+        <input id="daysRange" type="range" min="1" max="40" value="14">
+        <div class="toggles">
+          <label><input type="checkbox" class="metric-toggle" data-metric="lipids" checked> Lipids (LDL)</label>
+          <label><input type="checkbox" class="metric-toggle" data-metric="crp" checked> CRP (inflammation)</label>
+          <label><input type="checkbox" class="metric-toggle" data-metric="bdnf" checked> BDNF</label>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div class="chart-card">
+          <h4>Before vs After — Key Markers</h4>
+          <canvas id="markerChart" width="600" height="360" aria-label="Grafik perubahan beberapa marker sebelum dan sesudah puasa"></canvas>
+        </div>
+
+        <div class="chart-card">
+          <h4>Relative Change (%)</h4>
+          <canvas id="percentChart" width="600" height="360" aria-label="Grafik persentase perubahan biomarker"></canvas>
+        </div>
+      </div>
+
+      <div class="data-note muted" id="sources">
+        <strong>Catatan:</strong> Data pada simulasi ini berbasis contoh ringkasan literatur (Harvard, Nutrients, Frontiers). Untuk kutipan lengkap, cek halaman <em>Scientific & Spiritual Insights</em>.
+      </div>
+    </section>
+
+    <!-- Modal (detail chart / sources) -->
+    <div id="modal" class="modal" role="dialog" aria-hidden="true" aria-modal="true">
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-panel" role="document">
+        <button class="modal-close" aria-label="Tutup">✕</button>
+        <div class="modal-body">
+          <h3 id="modalTitle">Detail</h3>
+          <p id="modalText">Sumber dan ringkasan riset akan tampil di sini.</p>
+          <div class="modal-links">
+            <a href="#" target="_blank" id="modalSourceLink" class="small-cta">Buka sumber</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer container">
+    <small>© <span id="year"></span> Fasting — Body Update</small>
+  </footer>
+
+  <script>
+  // dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // --- Card flip & accessibility (same pattern as home) ---
+  (function(){
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      // toggle via keyboard
+      card.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('is-flipped');
+        }
+      });
+      // click/tap toggles
+      card.addEventListener('click', (e) => {
+        if(e.target.closest('a')) return;
+        card.classList.toggle('is-flipped');
+      });
+    });
+  })();
+
+  // --- Mini sparkline placeholders (generate simple inline spark using canvas) ---
+  (function(){
+    const sparks = document.querySelectorAll('.mini-spark');
+    sparks.forEach(s => {
+      const type = s.dataset.spark;
+      const cvs = document.createElement('canvas');
+      cvs.width = 140; cvs.height = 28;
+      s.appendChild(cvs);
+      const ctx = cvs.getContext('2d');
+
+      // random-ish series but deterministic per type
+      const seed = [...type].reduce((a,c)=> a + c.charCodeAt(0), 0);
+      function pseudo(n){ return (Math.sin(n + seed) + 1) / 2; }
+
+      const data = Array.from({length: 18}, (_,i) => 0.2 + pseudo(i) * 0.8);
+      // draw
+      ctx.clearRect(0,0,cvs.width,cvs.height);
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--neon-green').trim() || '#00FFA3';
+      ctx.beginPath();
+      data.forEach((v,i) => {
+        const x = (i / (data.length-1)) * (cvs.width - 8) + 4;
+        const y = cvs.height - (v * (cvs.height - 8)) - 4;
+        if(i === 0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      });
+      ctx.stroke();
+    });
+  })();
+
+  // --- Mini progress ring in Cells card (static fill) ---
+  (function(){
+    const fg = document.querySelector('.card.autophagy .mini-ring .fg');
+    const valEl = document.querySelector('.card.autophagy .mini-number .val');
+    if(!fg) return;
+    const target = 72; // example
+    const radius = 48;
+    const circ = 2 * Math.PI * radius;
+    fg.style.strokeDasharray = `${circ} ${circ}`;
+    fg.style.strokeDashoffset = circ;
+    // animate little
+    setTimeout(()=> {
+      const offset = circ - (target/100) * circ;
+      fg.style.transition = 'stroke-dashoffset 1100ms cubic-bezier(.2,.9,.2,1)';
+      fg.style.strokeDashoffset = offset;
+      let cur=0;
+      const dur = 900; const start = performance.now();
+      function tick(now){
+        const t = Math.min(1, (now-start)/dur);
+        const eased = t<.5 ? 2*t*t : -1 + (4 - 2*t)*t;
+        valEl.textContent = Math.round(eased * target);
+        if(t<1) requestAnimationFrame(tick); else valEl.textContent = target;
+      }
+      requestAnimationFrame(tick);
+    }, 500);
+  })();
+
+  // --- Modal for sources/details ---
+  (function(){
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalSourceLink = document.getElementById('modalSourceLink');
+    const closeBtns = modal.querySelectorAll('[data-close], .modal-close');
+
+    function openModal(title, text, href){
+      modalTitle.textContent = title;
+      modalText.textContent = text;
+      modalSourceLink.href = href || '#';
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    closeBtns.forEach(b => b.addEventListener('click', closeModal));
+    modal.querySelector('.modal-backdrop').addEventListener('click', closeModal);
+
+    // wire "open-chart" links to modal with contextual text
+    document.querySelectorAll('.open-chart').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const chart = a.dataset.chart;
+        // simple mapping for demo
+        const map = {
+          'lipids': {
+            title: 'Lipids & LDL — Ringkasan',
+            text: 'Studi observasional menunjukkan penurunan LDL pada subjek yang melakukan puasa intermiten / Ramadan. Presentasi dapat bervariasi antar individu.',
+            href: 'https://www.ncbi.nlm.nih.gov'
+          },
+          'autophagy': {
+            title: 'Autophagy — Ringkasan',
+            text: 'Autophagy diinduksi selama periode puasa; ini membantu pembersihan komponen sel dan berpotensi meningkatkan regenerasi.',
+            href: 'https://www.ncbi.nlm.nih.gov'
+          },
+          'bdnf': {
+            title: 'BDNF & Otak',
+            text: 'Peningkatan BDNF dilaporkan pada beberapa studi puasa/IF, berhubungan dengan mood & kognisi.',
+            href: 'https://www.frontiersin.org'
+          },
+          'metabolic': {
+            title: 'Metabolic Markers',
+            text: 'Perbaikan sensitivitas insulin dan penurunan CRP dilaporkan di beberapa studi TRF / IF.',
+            href: 'https://www.ncbi.nlm.nih.gov'
+          }
+        };
+        const obj = map[chart] || {title:'Detail', text:'Sumber tersedia di halaman ilmiah.'};
+        openModal(obj.title, obj.text, obj.href);
+        // also scroll to charts for visual continuity
+        document.querySelector('#data-viz').scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  })();
+
+  // --- Charts with interactive slider ---
+  (function(){
+    // base example values (before / after baseline for '14 days')
+    // Data expressed as baseline (before) and simulated after based on days.
+    const base = {
+      lipids: { before: 130, afterAt14: 95 }, // LDL mg/dL approximate example
+      crp: { before: 3.2, afterAt14: 2.08 }, // CRP mg/L (example 35% reduction)
+      bdnf: { before: 1.0, afterAt14: 1.5 } // relative units (example +50%)
+    };
+
+    // utility to interpolate after value depending on days (sigmoid-ish)
+    function simulateAfter(metric, days){
+      // scale 1..40 days. We'll assume most change occurs in first ~21 days then saturates.
+      const span = Math.min(Math.max(days,1),40);
+      const t = span / 21; // 21 days as "near-saturation"
+      const ease = 1 - Math.pow(1 - Math.min(t,1), 1.8); // easing to saturate
+      const afterAt14 = base[metric].afterAt14;
+      // derive full-saturation value by scaling proportionally (use 1.15 factor)
+      const full = base[metric].before + (afterAt14 - base[metric].before) * (1.15);
+      return base[metric].before + (full - base[metric].before) * ease;
+    }
+
+    // initial days
+    const daysRange = document.getElementById('daysRange');
+    const daysValue = document.getElementById('daysValue');
+
+    function buildDatasets(days){
+      const metrics = ['lipids','crp','bdnf'];
+      const before = metrics.map(m => base[m].before);
+      const after = metrics.map(m => Number((simulateAfter(m, days)).toFixed(m==='crp'?2:1)));
+      const labels = ['LDL (mg/dL)', 'CRP (mg/L)', 'BDNF (rel)'];
+      return { labels, before, after, metrics };
+    }
+
+    // Chart 1: grouped bar (before vs after)
+    const ctx1 = document.getElementById('markerChart').getContext('2d');
+    const initial = buildDatasets(Number(daysRange.value));
+    const markerChart = new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: initial.labels,
+        datasets: [
+          { label: 'Before', data: initial.before, backgroundColor: 'rgba(255,255,255,0.08)', borderRadius:6 },
+          { label: 'After', data: initial.after, backgroundColor: 'linear-gradient', borderRadius:6 }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend:{ labels:{ color: '#CFEFE8' } },
+          tooltip: { mode: 'index', intersect:false }
+        },
+        scales:{
+          x: { ticks:{ color:'#CFEFE8' }, grid:{ display:false } },
+          y: { ticks:{ color:'#CFEFE8' }, grid:{ color:'rgba(255,255,255,0.03)' } }
+        }
+      },
+      plugins: [{
+        id: 'gradientFill',
+        beforeDatasetsDraw(chart, args, options){
+          const dataset = chart.data.datasets[1];
+          const ctx = chart.ctx;
+          const gradient = ctx.createLinearGradient(0,0,0,chart.height);
+          gradient.addColorStop(0, 'rgba(36,214,255,0.9)');
+          gradient.addColorStop(1, 'rgba(0,255,163,0.5)');
+          dataset.backgroundColor = gradient;
+        }
+      }]
+    });
+
+    // Chart 2: percent change
+    const ctx2 = document.getElementById('percentChart').getContext('2d');
+    function calcPercentChange(before, after){
+      return after && before ? ((after - before) / before) * 100 : 0;
+    }
+    const pInit = initial.before.map((b,i) => calcPercentChange(b, initial.after[i]));
+    const percentChart = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: initial.labels,
+        datasets: [{ label: '% Change', data: pInit, backgroundColor: 'rgba(168,255,96,0.9)', borderRadius:6 }]
+      },
+      options:{
+        responsive:true,
+        plugins:{ legend:{ display:false }, tooltip:{ callbacks:{ label(ctx){ return ctx.parsed.y.toFixed(1) + '%'; } } } },
+        scales:{
+          x:{ ticks:{ color:'#CFEFE8' }, grid:{ display:false } },
+          y:{ ticks:{ color:'#CFEFE8', callback: v => v + '%' }, grid:{ color:'rgba(255,255,255,0.03)' } }
+        }
+      }
+    });
+
+    // update function when slider changes or toggles
+    function updateCharts(days){
+      const ds = buildDatasets(days);
+      // update markerChart
+      markerChart.data.datasets[0].data = ds.before;
+      markerChart.data.datasets[1].data = ds.after;
+      markerChart.update();
+
+      // percent
+      const pct = ds.before.map((b,i) => calcPercentChange(b, ds.after[i]));
+      percentChart.data.datasets[0].data = pct.map(n => Number(n.toFixed(1)));
+      percentChart.update();
+
+      // reflect slider label
+      daysValue.textContent = days;
+    }
+
+    // slider listener
+    daysRange.addEventListener('input', (e) => {
+      updateCharts(Number(e.target.value));
+    });
+
+    // metric toggles (show/hide series in markerChart)
+    document.querySelectorAll('.metric-toggle').forEach(cb => {
+      cb.addEventListener('change', () => {
+        // For this demo we simply toggle the corresponding bar (by setting opacity)
+        // If unchecked, we dim both before/after for that metric via making values 0
+        const metric = cb.dataset.metric;
+        // map metric->index
+        const map = { lipids:0, crp:1, bdnf:2 };
+        const idx = map[metric];
+        if(idx === undefined) return;
+        if(cb.checked){
+          // restore by recalculating based on slider
+          updateCharts(Number(daysRange.value));
+        } else {
+          // set corresponding data points to 0 in both datasets visually (but keep original in memory)
+          markerChart.data.datasets.forEach(ds => ds.data[idx] = 0);
+          markerChart.update();
+          percentChart.data.datasets[0].data[idx] = 0;
+          percentChart.update();
+        }
+      });
+    });
+
+    // initial draw
+    updateCharts(Number(daysRange.value));
+  })();
+
+  // Optional: animate charts when scrolled into view (IntersectionObserver)
+  (function(){
+    const vizSection = document.getElementById('data-viz');
+    const charts = [document.getElementById('markerChart'), document.getElementById('percentChart')];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          charts.forEach(c => {
+            // Chart.js handles animation on data update; no-op (kept for extensibility)
+          });
+          obs.unobserve(vizSection);
+        }
+      });
+    }, {threshold:0.2});
+    obs.observe(vizSection);
+  })();
+
+  </script>
+</body>
+</html>
