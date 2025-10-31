@@ -38,11 +38,15 @@
         </div>
       </div>
 
-      <nav class="nav">
-        <a href="index.html" class="ghost">Home</a>
-        <a href="body.html">Body Update</a>
-        <a href="soul.html">Soul Update</a>
-      </nav>
+      <nav class="nav" id="nav">
+  <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+  <div class="nav-links">
+    <a href="index.html" class="ghost">Home</a>
+    <a href="body.html">Body Update</a>
+    <a href="soul.html">Soul Update</a>
+  </div>
+</nav>
+
     </div>
   </header>
 
@@ -311,5 +315,12 @@
       obs.observe(autophagyCard);
     })();
   </script>
+
+  <script>
+document.querySelector('.nav-toggle').addEventListener('click', ()=>{
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+</script>
+
 </body>
 </html>
