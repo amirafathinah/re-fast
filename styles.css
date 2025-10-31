@@ -150,14 +150,16 @@ body{
   letter-spacing:-0.6px;
   color:#F3FFF9;
 }
-.highlight{
-  display:inline-block;
-  background: linear-gradient(90deg, rgba(0,255,163,0.06), rgba(36,214,255,0.04));
+.highlight {
   color: var(--neon-green);
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
-  font-weight:800;
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  font-weight: 800;
+  text-shadow:
+    0 2px 8px rgba(0, 255, 163, 0.08),
+    0 6px 24px rgba(36, 214, 255, 0.04);
 }
 .hero-lead{
   color:var(--muted);
@@ -365,16 +367,24 @@ body{
 /* orbit rings svg */
 .orbit-rings{ position:absolute; width:380px; height:380px; transform:translateY(10px) rotate(-18deg); opacity:0.9; }
 
-/* watermark */
 .watermark{
-  position:absolute;
-  right:10px;
-  bottom:6px;
-  font-size:42px;
-  font-weight:800;
-  color: rgba(255,255,255,0.02);
-  letter-spacing:6px;
-  transform:rotate(-4deg);
+  color: rgba(0, 255, 163, 0.10); /* neon green with low opacity */
+  text-shadow:
+    0 8px 28px rgba(0, 255, 163, 0.06),
+    0 2px 8px rgba(36, 214, 255, 0.03);
+  font-size: 46px;         /* tweak if needed */
+  letter-spacing: 6px;
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+
+/* If watermark is too bright on mobile, reduce intensity */
+@media (max-width: 560px){
+  .watermark{
+    color: rgba(0,255,163,0.08);
+    font-size: 28px;
+    letter-spacing: 3px;
+  }
 }
 
 /* Section heads */
