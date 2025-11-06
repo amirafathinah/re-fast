@@ -188,6 +188,8 @@ body{
   .list-panel{ padding:16px; border-radius:16px; }
   .pill{ font-size:15px; padding:12px 14px; }
   .watermark{ display:none; }
+  .header-grid{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .nav{ align-self:flex-end; }
 }
 
 @media (max-width:560px){
