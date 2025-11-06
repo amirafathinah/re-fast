@@ -208,3 +208,40 @@ body{
   .footer-grid{ flex-direction:column; gap:8px; text-align:center; }
   .btn{ display:block; width:100%; margin:8px 0 0; text-align:center; }
 }
+
+/* Mobile nav panel when toggled open */
+@media (max-width: 560px) {
+  /* Base: hide nav links by default */
+  .nav { display: none; }
+
+  /* When open, show as dropdown panel */
+  .nav.open {
+    display: flex;
+    position: absolute;
+    right: 14px;
+    top: 64px; /* adjust if header height different */
+    background: linear-gradient(180deg, rgba(8,18,36,0.98), rgba(11,29,58,0.98));
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(2,45,78,0.6);
+    flex-direction: column;
+    gap: 8px;
+    z-index: 80;
+    min-width: 160px;
+    border: 1px solid rgba(0,255,163,0.06);
+  }
+
+  /* Make links block-level and touch friendly */
+  .nav.open a {
+    display: block;
+    padding: 8px 12px;
+    color: var(--soft-mint, #C3FFD7);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+  }
+  .nav.open a:hover { background: rgba(255,255,255,0.02); color: var(--neon-green, #00FFA3); }
+
+  /* ensure toggle button is visible */
+  .nav-toggle{ display:inline-block; }
+}
