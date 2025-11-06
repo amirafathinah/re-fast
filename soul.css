@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Soul Update — Software Refresh</title>
+
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="soul.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-grid">
+      <div class="brand">
+        <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+        <div class="brand-logo" aria-hidden="true">
+          <!-- logo simple -->
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M7 13c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Fasting</h1>
+          <p class="tagline">Your Holistic System Update</p>
+        </div>
+      </div>
+
+      <nav id="mainNav" class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="body.html">Body Update</a>
+        <a href="soul.html" class="active">Soul Update</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Title area -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-left">
+          <div class="title-pill" role="heading" aria-level="1">Software Refresh</div>
+
+          <p class="hero-sub">
+            Puasa memperbarui *software* batin kita: melatih pengendalian diri, membersihkan hati, mendekatkan diri kepada Allah,
+            menumbuhkan kepedulian sosial, menghadirkan ketenangan batin, dan memperdalam keikhlasan & syukur.
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn primary" href="#soul-list">Lihat Poin Utama</a>
+            <a class="btn ghost" href="scientific.html">Scientific Insights</a>
+          </div>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+          <div class="orb" aria-hidden="true">
+            <div class="orb-core"></div>
+          </div>
+          <div class="watermark">FASTING</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Soul list: sesuai gambar, pill vertical -->
+    <section id="soul-list" class="soul-list">
+      <div class="container">
+        <div class="list-panel" role="region" aria-labelledby="soul-list-title">
+          <h2 id="soul-list-title" class="sr-only">Software Refresh — poin utama</h2>
+
+          <ul class="pill-list" role="list">
+            <li class="pill" tabindex="0">Melatih pengendalian diri</li>
+            <li class="pill" tabindex="0">Membersihkan hati dan jiwa</li>
+            <li class="pill" tabindex="0">Mendekatkan diri kepada Allah</li>
+            <li class="pill" tabindex="0">Menumbuhkan kepedulian sosial</li>
+            <li class="pill" tabindex="0">Menumbuhkan ketenangan batin</li>
+            <li class="pill" tabindex="0">Meningkatkan keikhlasan dan syukur</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Short explanation -->
+    <section class="explain">
+      <div class="container explain-inner">
+        <h3>Apa yang dimaksud "Software Refresh"?</h3>
+        <p class="muted">Halaman ini menampilkan dimensi spiritual & psikologis puasa — poin-poin di atas adalah manfaat rohani/psikologis yang sering dilaporkan dalam studi dan pengalaman ibadah.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>© <span id="year"></span> Fasting</div>
+      <div class="footer-links">
+        <a href="index.html#scientific">Sources</a>
+        <a href="index.html#join">Join</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // mobile nav toggle (no new HTML files created)
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('mainNav');
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+
+    // small enhancement: make pills announce via aria-live on focus (optional but helpful)
+    const pills = document.querySelectorAll('.pill');
+    const live = document.createElement('div');
+    live.setAttribute('aria-live','polite');
+    live.className = 'sr-only';
+    document.body.appendChild(live);
+    pills.forEach(p => {
+      p.addEventListener('focus', () => {
+        live.textContent = p.textContent;
+      });
+    });
+  </script>
+</body>
+</html>
