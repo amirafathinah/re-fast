@@ -26,13 +26,14 @@
       </div>
 
       <nav class="nav" id="nav">
-  <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
   <div class="nav-links">
-    <a href="index.html" >Home</a>
+    <a href="index.html">Home</a>
     <a href="body.html">Body Update</a>
     <a href="soul.html" class="ghost">Soul Update</a>
   </div>
 </nav>
+
 
     </div>
   </header>
@@ -104,14 +105,44 @@
     // dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // mobile nav toggle
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('mainNav');
+    <script>
+  // dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile nav toggle — targetkan ID yang kamu pakai (#nav)
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('nav'); // <- pastikan ini sesuai id di HTML
+
+  // safety if elements missing
+  if (btn && nav) {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open');
     });
+  }
+
+  // Progress animation (restore) ...
+  const fill = document.querySelector('.progress-fill');
+  let width = 0;
+  const interval = setInterval(() => {
+    if (width >= 100) {
+      clearInterval(interval);
+      document.querySelector('.progress-text').innerText = 'Soul Upgrade Complete 🌸';
+    } else {
+      width++;
+      if (fill) fill.style.width = width + '%';
+    }
+  }, 100);
+
+  // aria-live for pills (optional)
+  const pills = document.querySelectorAll('.pill');
+  const live = document.createElement('div');
+  live.setAttribute('aria-live','polite');
+  live.className = 'sr-only';
+  document.body.appendChild(live);
+  pills.forEach(p => p.addEventListener('focus', () => live.textContent = p.textContent ));
+</script>
 
     // Progress animation (restore)
     const fill = document.querySelector('.progress-fill');
