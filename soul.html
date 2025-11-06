@@ -25,16 +25,15 @@
         </div>
       </div>
 
-      <nav class="nav" id="nav">
-  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="body.html">Body Update</a>
-    <a href="soul.html" class="ghost">Soul Update</a>
-  </div>
-</nav>
-
-
+      <!-- nav: keep button + links together. JS toggles class "open" on #nav -->
+      <nav class="nav" id="nav" aria-label="Primary navigation">
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <div class="nav-links" role="menu">
+          <a role="menuitem" href="index.html">Home</a>
+          <a role="menuitem" href="body.html">Body Update</a>
+          <a role="menuitem" href="soul.html" class="ghost">Soul Update</a>
+        </div>
+      </nav>
     </div>
   </header>
 
@@ -81,15 +80,16 @@
       </div>
     </section>
 
-    <!-- Progress Section (added back) -->
+    <!-- Progress Section (restored) -->
     <section class="progress-section">
       <h3>Inner Peace Level</h3>
       <div class="progress-bar">
-        <div class="progress-fill"></div>
+        <div class="progress-fill" aria-hidden="true"></div>
       </div>
-      <p class="progress-text">Upgrading your soul...</p>
+      <p class="progress-text" aria-live="polite">Upgrading your soul...</p>
     </section>
 
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
@@ -101,63 +101,50 @@
     </div>
   </footer>
 
+  <!-- Single script block (clean) -->
   <script>
     // dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    <script>
-  // dynamic year
-  document.getElementById('year').textContent = new Date().getFullYear();
+    // NAV TOGGLE: target DOM elements that exist (#nav and .nav-toggle)
+    const nav = document.getElementById('nav');
+    const navToggle = nav ? nav.querySelector('.nav-toggle') : null;
+    const navLinks = nav ? nav.querySelector('.nav-links') : null;
 
-  // mobile nav toggle — targetkan ID yang kamu pakai (#nav)
-  const btn = document.querySelector('.nav-toggle');
-  const nav = document.getElementById('nav'); // <- pastikan ini sesuai id di HTML
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+      });
 
-  // safety if elements missing
-  if (btn && nav) {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
-  }
-
-  // Progress animation (restore) ...
-  const fill = document.querySelector('.progress-fill');
-  let width = 0;
-  const interval = setInterval(() => {
-    if (width >= 100) {
-      clearInterval(interval);
-      document.querySelector('.progress-text').innerText = 'Soul Upgrade Complete 🌸';
-    } else {
-      width++;
-      if (fill) fill.style.width = width + '%';
+      // auto-close when a link is clicked (mobile)
+      if (navLinks) {
+        navLinks.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+            nav.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
     }
-  }, 100);
-
-  // aria-live for pills (optional)
-  const pills = document.querySelectorAll('.pill');
-  const live = document.createElement('div');
-  live.setAttribute('aria-live','polite');
-  live.className = 'sr-only';
-  document.body.appendChild(live);
-  pills.forEach(p => p.addEventListener('focus', () => live.textContent = p.textContent ));
-</script>
 
     // Progress animation (restore)
     const fill = document.querySelector('.progress-fill');
+    const progressText = document.querySelector('.progress-text');
     let width = 0;
     const interval = setInterval(() => {
       if (width >= 100) {
         clearInterval(interval);
-        document.querySelector('.progress-text').innerText = 'Soul Upgrade Complete 🌸';
+        if (progressText) progressText.innerText = 'Soul Upgrade Complete 🌸';
       } else {
         width++;
-        fill.style.width = width + '%';
+        if (fill) fill.style.width = width + '%';
       }
-    }, 100);
+    }, 50);
 
-    // aria-live for pills (optional)
+    // aria-live for pills (announce focus)
     const pills = document.querySelectorAll('.pill');
     const live = document.createElement('div');
     live.setAttribute('aria-live','polite');
