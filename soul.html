@@ -15,7 +15,6 @@
       <div class="brand">
         <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
         <div class="brand-logo" aria-hidden="true">
-          <!-- logo simple -->
           <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
             <path d="M7 13c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
@@ -36,7 +35,6 @@
   </header>
 
   <main>
-    <!-- Hero / Title area -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-left">
@@ -49,7 +47,7 @@
 
           <div class="hero-ctas">
             <a class="btn primary" href="#soul-list">Lihat Poin Utama</a>
-            <a class="btn ghost" href="scientific.html">Scientific Insights</a>
+            <a class="btn ghost" href="index.html#scientific">Scientific Insights</a>
           </div>
         </div>
 
@@ -62,7 +60,6 @@
       </div>
     </section>
 
-    <!-- Soul list: sesuai gambar, pill vertical -->
     <section id="soul-list" class="soul-list">
       <div class="container">
         <div class="list-panel" role="region" aria-labelledby="soul-list-title">
@@ -80,7 +77,15 @@
       </div>
     </section>
 
-    <!-- Short explanation -->
+    <!-- Progress Section (added back) -->
+    <section class="progress-section">
+      <h3>Inner Peace Level</h3>
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p class="progress-text">Upgrading your soul...</p>
+    </section>
+
     <section class="explain">
       <div class="container explain-inner">
         <h3>Apa yang dimaksud "Software Refresh"?</h3>
@@ -103,7 +108,7 @@
     // dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // mobile nav toggle (no new HTML files created)
+    // mobile nav toggle
     const btn = document.querySelector('.nav-toggle');
     const nav = document.getElementById('mainNav');
     btn.addEventListener('click', () => {
@@ -112,16 +117,27 @@
       nav.classList.toggle('open');
     });
 
-    // small enhancement: make pills announce via aria-live on focus (optional but helpful)
+    // Progress animation (restore)
+    const fill = document.querySelector('.progress-fill');
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        document.querySelector('.progress-text').innerText = 'Soul Upgrade Complete 🌸';
+      } else {
+        width++;
+        fill.style.width = width + '%';
+      }
+    }, 100);
+
+    // aria-live for pills (optional)
     const pills = document.querySelectorAll('.pill');
     const live = document.createElement('div');
     live.setAttribute('aria-live','polite');
     live.className = 'sr-only';
     document.body.appendChild(live);
     pills.forEach(p => {
-      p.addEventListener('focus', () => {
-        live.textContent = p.textContent;
-      });
+      p.addEventListener('focus', () => live.textContent = p.textContent );
     });
   </script>
 </body>
