@@ -1,128 +1,174 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Soul Update — Software Refresh</title>
+:root{
+  --midnight-navy: #0B1D3A;
+  --neon-green: #00FFA3;
+  --aqua-blue: #24D6FF;
+  --soft-mint: #C3FFD7;
+  --pill-bg-start: #CFEFFF; /* light blue pill fill */
+  --pill-bg-end: #DFFBFF;
+  --muted: rgba(255,255,255,0.68);
+  --bg: var(--midnight-navy);
+  --maxwidth: 1100px;
+  --radius: 18px;
+}
 
-  <!-- Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="soul.css">
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-grid">
-      <div class="brand">
-        <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false">☰</button>
-        <div class="brand-logo" aria-hidden="true">
-          <!-- logo simple -->
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/>
-            <path d="M7 13c1.5-2 3-3 5-3s3.5 1 5 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <h1>Fasting</h1>
-          <p class="tagline">Your Holistic System Update</p>
-        </div>
-      </div>
+/* Reset & base */
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background:
+    radial-gradient(900px 400px at 12% 18%, rgba(36,214,255,0.04), transparent),
+    radial-gradient(800px 400px at 88% 82%, rgba(168,255,96,0.02), transparent),
+    var(--bg);
+  color: #E7F6F2;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
 
-      <nav id="mainNav" class="nav" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="body.html">Body Update</a>
-        <a href="soul.html" class="active">Soul Update</a>
-      </nav>
-    </div>
-  </header>
+/* util */
+.container{ width:92%; max-width:var(--maxwidth); margin:0 auto; }
 
-  <main>
-    <!-- Hero / Title area -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <div class="title-pill" role="heading" aria-level="1">Software Refresh</div>
+/* header */
+.site-header{ position:sticky; top:12px; z-index:40; padding:10px 0; background:transparent; }
+.header-grid{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.brand{ display:flex; align-items:center; gap:12px; }
+.brand-logo svg{ color:var(--neon-green); filter:drop-shadow(0 6px 18px rgba(0,255,163,0.06)); }
+.brand-text h1{ margin:0; font-size:16px; color:#E6FFF4; font-weight:700; }
+.tagline{ margin:0; font-size:12px; color:var(--muted); margin-top:-2px; }
 
-          <p class="hero-sub">
-            Puasa memperbarui *software* batin kita: melatih pengendalian diri, membersihkan hati, mendekatkan diri kepada Allah,
-            menumbuhkan kepedulian sosial, menghadirkan ketenangan batin, dan memperdalam keikhlasan & syukur.
-          </p>
+/* nav */
+.nav{ display:flex; gap:10px; align-items:center; }
+.nav a{ color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; font-size:14px; }
+.nav a.active{ color:var(--neon-green); background: rgba(0,255,163,0.06); }
+.nav.open{ display:flex; flex-direction:column; gap:8px; margin-top:10px; }
 
-          <div class="hero-ctas">
-            <a class="btn primary" href="#soul-list">Lihat Poin Utama</a>
-            <a class="btn ghost" href="scientific.html">Scientific Insights</a>
-          </div>
-        </div>
+/* mobile toggle */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:0;
+  color:var(--soft-mint);
+  font-size:20px;
+  cursor:pointer;
+}
 
-        <div class="hero-right" aria-hidden="true">
-          <div class="orb" aria-hidden="true">
-            <div class="orb-core"></div>
-          </div>
-          <div class="watermark">FASTING</div>
-        </div>
-      </div>
-    </section>
+/* hero */
+.hero{ padding:36px 0 22px; }
+.hero-inner{ display:flex; gap:28px; align-items:center; justify-content:space-between; }
+.hero-left{ flex:1; min-width:220px; max-width:720px; }
+.title-pill{
+  display:inline-block;
+  padding:18px 26px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:28px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  color:#FFFFFF;
+  border: 6px solid rgba(255,255,255,0.06);
+  box-shadow: inset 0 -6px 18px rgba(0,0,0,0.25), 0 14px 40px rgba(0,0,0,0.45);
+  width: fit-content;
+}
+.hero-sub{ margin-top:18px; color:var(--muted); font-size:16px; line-height:1.6; max-width:680px; }
 
-    <!-- Soul list: sesuai gambar, pill vertical -->
-    <section id="soul-list" class="soul-list">
-      <div class="container">
-        <div class="list-panel" role="region" aria-labelledby="soul-list-title">
-          <h2 id="soul-list-title" class="sr-only">Software Refresh — poin utama</h2>
+/* hero decorative orb */
+.hero-right{ width:320px; height:220px; position:relative; display:flex; align-items:center; justify-content:center; }
+.orb{ width:240px; height:240px; border-radius:50%; position:relative; display:flex; align-items:center; justify-content:center;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.85), rgba(255,255,255,0.06) 12%),
+    radial-gradient(circle at 60% 65%, rgba(36,214,255,0.45), rgba(0,255,163,0.18) 40%),
+    linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.18));
+  box-shadow: 0 25px 70px rgba(0,0,0,0.6), 0 8px 30px rgba(0,255,163,0.03);
+  transform: translateY(-6px);
+}
+.orb-core{ width:120px; height:120px; border-radius:50%; background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.9), rgba(36,214,255,0.06)); filter: blur(6px); opacity:0.9; }
+.watermark{ position:absolute; right:8px; bottom:-8px; font-size:42px; font-weight:800; color: rgba(255,255,255,0.03); letter-spacing:6px; transform: rotate(-4deg); pointer-events:none; }
 
-          <ul class="pill-list" role="list">
-            <li class="pill" tabindex="0">Melatih pengendalian diri</li>
-            <li class="pill" tabindex="0">Membersihkan hati dan jiwa</li>
-            <li class="pill" tabindex="0">Mendekatkan diri kepada Allah</li>
-            <li class="pill" tabindex="0">Menumbuhkan kepedulian sosial</li>
-            <li class="pill" tabindex="0">Menumbuhkan ketenangan batin</li>
-            <li class="pill" tabindex="0">Meningkatkan keikhlasan dan syukur</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+/* soul list panel */
+.soul-list{ padding:20px 0 48px; }
+.list-panel{
+  max-width:720px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:22px;
+  padding:22px;
+  border:1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
 
-    <!-- Short explanation -->
-    <section class="explain">
-      <div class="container explain-inner">
-        <h3>Apa yang dimaksud "Software Refresh"?</h3>
-        <p class="muted">Halaman ini menampilkan dimensi spiritual & psikologis puasa — poin-poin di atas adalah manfaat rohani/psikologis yang sering dilaporkan dalam studi dan pengalaman ibadah.</p>
-      </div>
-    </section>
-  </main>
+/* pills */
+.pill-list{ list-style:none; margin:0; padding:8px; display:flex; flex-direction:column; gap:14px; }
+.pill{
+  display:block;
+  padding:14px 18px;
+  border-radius:999px;
+  background: linear-gradient(90deg, var(--pill-bg-start), var(--pill-bg-end));
+  color: var(--midnight-navy);
+  font-weight:700;
+  font-size:16px;
+  text-align:center;
+  border: 6px solid rgba(255,255,255,0.95); /* thick white border like image */
+  box-shadow: 0 8px 20px rgba(2,45,78,0.45), inset 0 -8px 18px rgba(0,0,0,0.08);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+  cursor:default;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+/* focus for keyboard users */
+.pill:focus{
+  outline: none;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(2,45,78,0.6);
+}
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>© <span id="year"></span> Fasting</div>
-      <div class="footer-links">
-        <a href="index.html#scientific">Sources</a>
-        <a href="index.html#join">Join</a>
-      </div>
-    </div>
-  </footer>
+/* explanation */
+.explain{ padding:28px 0 64px; }
+.explain-inner{ max-width:900px; margin:0 auto; text-align:center; }
+.explain h3{ color:#EFFFF4; margin-bottom:8px; font-size:20px; }
+.explain .muted{ color:var(--muted); margin-bottom:14px; }
 
-  <script>
-    // dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
+/* buttons */
+.btn{ display:inline-block; padding:10px 16px; border-radius:12px; text-decoration:none; font-weight:700; margin-right:10px; }
+.btn.primary{ background: linear-gradient(90deg, rgba(0,255,163,0.12), rgba(36,214,255,0.06)); color: var(--neon-green); border:1px solid rgba(0,255,163,0.12); }
+.btn.ghost{ background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04); }
 
-    // mobile nav toggle (no new HTML files created)
-    const btn = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('mainNav');
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      nav.classList.toggle('open');
-    });
+/* footer */
+.site-footer{ padding:26px 0; border-top:1px solid rgba(255,255,255,0.02); color:var(--muted); }
+.footer-grid{ display:flex; justify-content:space-between; gap:12px; align-items:center; }
 
-    // small enhancement: make pills announce via aria-live on focus (optional but helpful)
-    const pills = document.querySelectorAll('.pill');
-    const live = document.createElement('div');
-    live.setAttribute('aria-live','polite');
-    live.className = 'sr-only';
-    document.body.appendChild(live);
-    pills.forEach(p => {
-      p.addEventListener('focus', () => {
-        live.textContent = p.textContent;
-      });
-    });
-  </script>
-</body>
-</html>
+/* sr-only helper */
+.sr-only{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px){
+  .hero-inner{ flex-direction:column; align-items:center; text-align:center; gap:18px; }
+  .hero-right{ width:260px; height:180px; }
+  .title-pill{ font-size:24px; padding:14px 22px; }
+  .hero-sub{ font-size:15px; max-width:520px; }
+  .list-panel{ padding:18px; border-radius:16px; }
+  .pill{ font-size:15px; padding:12px 14px; }
+  .watermark{ display:none; }
+}
+
+@media (max-width: 560px){
+  .container{ width:96%; }
+  .nav{ display:none; } /* hide nav links on mobile; toggle will open it */
+  .nav.open{ display:flex; }
+  .nav-toggle{ display:inline-block; }
+  .title-pill{ font-size:20px; padding:12px 16px; width:100%; text-align:center; box-sizing:border-box; }
+  .hero-sub{ font-size:14px; padding:0 6px; }
+  .list-panel{ padding:14px; }
+  .pill{ font-size:16px; padding:14px; border-width:5px; }
+  .brand-text h1{ font-size:15px; }
+  .tagline{ display:none; }
+  .orb{ width:160px; height:160px; transform: translateY(-4px); }
+  .orb-core{ width:84px; height:84px; }
+  .footer-grid{ flex-direction:column; gap:8px; text-align:center; }
+  .btn{ display:block; width:100%; margin:8px 0 0; text-align:center; }
+}
+
+/* very small phones */
+@media (max-width: 360px){
+  .pill{ font-size:15px; padding:12px; }
+  .title-pill{ font-size:18px; padding:10px 12px; }
+}
